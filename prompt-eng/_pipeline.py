@@ -33,6 +33,8 @@ def load_config():
     """
     Load config file looking into multiple locations
     """
+    
+    """
     config_locations = [
         "./_config",
         "prompt-eng/_config",
@@ -56,6 +58,9 @@ def load_config():
             if line and not line.startswith("#"):
                 key, value = line.split('=', 1)
                 os.environ[key.strip()] = value.strip()
+                
+    """
+    os.environ['URL_GENERATE'] = 'http://localhost:12000/api/generate'
 
 
 def create_payload(model, prompt, target="ollama", **kwargs):
@@ -164,7 +169,7 @@ if __name__ == "__main__":
     PROMPT = MESSAGE 
     payload = create_payload(
                          target="open-webui",   
-                         model="llama3.2:latest", 
+                         model="llama3",
                          prompt=PROMPT, 
                          temperature=1.0, 
                          num_ctx=5555555, 
